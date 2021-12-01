@@ -38,6 +38,12 @@ heimdall print-pit
 ```
 7. If the device reboots that indicates that Heimdall is installed and working properly. If it does not, please refollow these instructions to verify steps weren't missed, try a different USB cable, and a different USB port.
 
+Alternatively, to avoid a reboot, you can run
+```
+heimdall print-pit --no-reboot
+```
+
+
 {% if custom_downgrade_instructions %}
 {{ custom_downgrade_instructions }}
 {% endif %}
@@ -63,12 +69,8 @@ heimdall print-pit
     * Now, click the button that the on screen instructions correlate to "Continue", and insert the USB cable into the device.
 3. On your machine, open a Command Prompt or PowerShell (Windows) window, or Terminal (Linux or macOS) window, and type:
 ```
-heimdall flash --RECOVERY <recovery_filename>.img --no-reboot
+heimdall flash --RECOVERY <recovery_filename>.img
 ```
-    {% include alerts/tip.html content="The file may not be named identically to what stands in this command, so adjust accordingly. If the file is wrapped in a zip or tar file, extract the file first, because Heimdall is not going to do it for you." %}
-4. A blue transfer bar will appear on the device showing the recovery image being flashed.
-    {% include alerts/note.html content="The device will continue to display `Downloading... Do not turn off target!!` even after the process is complete. When the status message in the top left of the devices's display reports that the process is complete, you may proceed." %}
-5. Unplug the USB cable from your device.
-6. Manually reboot into recovery, this may require pulling the device's battery out and putting it back in, or if you have a non-removable battery, press the Volume Down + Power buttons for 8~10 seconds until the screen turns black & release the buttons *immediately* when it does, then boot to recovery:
+and start holding down the recovery boot buttons.  
     * {{ device.recovery_boot }}
-    {% include alerts/note.html content="Be sure to reboot into recovery immediately after installing the custom recovery. If you don't the stock ROM will overwrite the custom recovery with the stock recovery, and you'll need to flash it again." %}
+    {% include alerts/note.html content="As soon as the flash is finished, the reboot will start. Be sure to reboot into recovery immediately after installing the custom recovery. If you don't the stock ROM will overwrite the custom recovery with the stock recovery, and you'll need to flash it again." %}
